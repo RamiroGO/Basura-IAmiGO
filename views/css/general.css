@@ -1,0 +1,29 @@
+body{
+	background-color: black;
+}
+.encabezado{
+	/* align-items: center; */
+	margin: auto;
+	text-align: right;
+	color: brown;
+}
+h1, .titulo1{
+	color: orangered;
+	text-align: center;
+}
+h2, .titulo2{
+	color: white;
+}
+.titulo3{
+	color: sandybrown;
+}
+.soporte{
+	color:aqua;
+	text-align: center;
+}
+.btncentro{
+	text-align: center;
+}
+a.btn1{
+	background-color: orangered;
+}

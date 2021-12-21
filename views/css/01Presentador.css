@@ -1,0 +1,27 @@
+body{
+	background-color: black;
+}
+.encabezado{
+	/* align-items: center; */
+	margin: auto;
+	text-align: right;
+	color: brown;
+}
+.titulo{
+	color: aqua;
+	text-align: center;
+}
+.datos_rami{
+	color:orangered;
+	text-align: center;
+}
+.value{
+	color: aqua;
+}
+.textcentro{
+	text-align: center;
+}
+a.btn1{
+	background-color: orangered;
+	color: blue;
+}
