@@ -2,28 +2,28 @@ const express = require("express");
 const morgan = require('morgan');
 const patch = require('path');
 
-const connect_server = express();
+const app = express();
 
 // Configurar el Puerto, en caso de no establecerse ninguno,
 //  establecer un valor por defecto 
 const PORT = process.env.PORT || 4000;
 
-connect_server.listen(PORT);
+app.listen(PORT);
 
 // Settings
-connect_server.set('port', PORT);
-connect_server.set('views', patch.join(__dirname, "./views/html")); // Ubicar la carpeta de Views donde se encuentran los HTMLs
-connect_server.engine('html', require('ejs').renderFile);
-connect_server.set('view engine', 'html');
+app.set('port', PORT);
+app.set('views', patch.join(__dirname, "./views/html")); // Ubicar la carpeta de Views donde se encuentran los HTMLs
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 // Middlewares
-connect_server.use(morgan("dev"));
-connect_server.use(express.urlencoded({ extended: false }));
-connect_server.use(express.json());
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 
 // Routes
-connect_server.get("/", (req, res) => {
+app.get("/", (req, res) => {
 	res.render("01Presentador.html");
 })
 
