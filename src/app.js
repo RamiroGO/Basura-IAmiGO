@@ -21,7 +21,7 @@ app.use(express.json());
 
 
 // Routes
-connect_server.use(require('./routes/routes'));
+app.use(require('./routes/routes'));
 
 app.listen(PORT);
 
