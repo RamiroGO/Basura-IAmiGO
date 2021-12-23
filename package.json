@@ -1,5 +1,5 @@
 {
-  "name": "app-vercel-first",
+  "name": "iamigo-app",
   "version": "1.0.0",
   "description": "Deploy de Node App a Vercel",
   "main": "index.js",
@@ -15,5 +15,8 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

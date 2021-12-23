@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <HEADER> -->
+<!-- Invocar el contenido del archivo head para hacer el header en nuestro HTML -->
+<%- include ('partials/head'); %>
+
+	<body>
+		<!-- HEADER -->
+		<!-- Invocar el contenido del archivo navigation para hacer la barra de navegación en nuestro HTML -->
+		<%- include ('partials/navigation'); %>
+
+			<div class="container p-5">
+				<div class="row">
+					<div class="col-md-4 offset-md-4">
+						<div class="card animate__bounceIn">
+							<div class="card-header bg-dark text-white text-center">
+								<h3>
+									Contact Me
+								</h3>
+							</div>
+						</div>
+						<div class="card-body">
+							<form action="" class="action-">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Email">
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" id="" cols="30" rows="10" placeholder="Message">
+
+									</textarea>
+								</div>
+								<div class="form-group d-grid gap-2">
+									<button class="btn btn-primary" type="button">
+										Send Message
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- FOOTER -->
+			<%- include('partials/footer.ejs');%>
+
+	</body>
+
+</html>
