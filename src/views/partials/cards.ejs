@@ -1,0 +1,27 @@
+<div class="row">
+	<% for(let i=0;i!=elements.length;i++){ %>
+		<!-- Tarjetas de enlaces -->
+		<div class="col-sm-6 mx-auto animate__bounceIn">
+			<div class="card text-center">
+				<div class="card-body">
+					<a href="<%- elements[i].id %>" target="_blank">
+						<h3 class="card-title text-uppercase">
+							<%- elements[i].username %>
+						</h3>
+					</a>
+					<p><%- elements[i].dateCreated %></p>
+					<a href="/links/delete/<%- elements[i].id %>" class="btn btn-danger">Delete Link</a>
+					<a href="/links/edit/<%- elements[i].id %>" class="btn btn-secondary">Edit</a>
+				</div>
+			</div>
+		</div>
+		<% } %>
+</div>
+<!-- LOGO IMG -->
+<!-- <div class="container">
+				<header class="row">
+					<div class="col-lg-12 text-center">
+						<img src="pews-logo.png" class="" alt="Pews Logo">
+					</div>
+				</header>
+			</div> -->

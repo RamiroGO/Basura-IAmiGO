@@ -29,9 +29,11 @@ app.use(express.json());
 /// Entrega de archivos e imágenes disponibles para el servidor
 app.use(express.static(path.join(__dirname, 'views/public/img')));
 app.use(express.static(path.join(__dirname, 'views/public/css')));
-app.use(express.static(path.join(__dirname, 'views/home/js')));
+app.use(express.static(path.join(__dirname, 'views/')));
 
 // Rutas de URL del Cliente y Comandos
+app.use(require('./routes/authentications/routes_post'));
+app.use(require('./routes/authentications/routes_get'));
 app.use(require('./routes/routes.js'));
 
 

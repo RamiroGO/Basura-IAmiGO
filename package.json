@@ -4,17 +4,19 @@
   "description": "Deploy de Node App a Vercel",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "util": "^0.12.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
