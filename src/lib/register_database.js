@@ -23,7 +23,7 @@ module.exports = {
 					this.Fields_Database.passw = hash_pass;
 
 					// Guardar el Usuario en la Base de Datos y recibir el id autogenerado por la base de datos.
-					connect_mysql.query("INSERT INTO `usuarios` SET ?", [this.Fields_Database], (err, result) => {
+					connect_mysql.query("INSERT INTO `users`.`fullname` SET ?", [this.Fields_Database], (err, result) => {
 						// Llorelo
 						if (err) return "(U_,U)";
 						// Disfrútelo

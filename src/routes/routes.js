@@ -2,17 +2,17 @@ const express = require("express");
 const router = express.Router();
 const { join } = require('path');
 
-const connect_database = require("../database/connect_mysql");
-const query_mysql = require('../database/querys.js');
+// const connect_database = require("../database/connect_mysql");
+// const query_mysql = require('../database/querys.js');
 
 // Ventana de Inicio de la página web
 router.get("/", async (_req, res) => {
-	let users = await query_mysql.getListUsers();
-	console.log(users);
+	// let users = await query_mysql.getListUsers();
+	// console.log(users);
 	// Dibuja la página Principal para acceder a un usuario ya existente
 	res.render('./home.html', {
-		"title": "IAmiGO",
-		"elements":users
+		"title": "IAmiGO"
+		// , "elements":users
 	});
 });
 
