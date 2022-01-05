@@ -1,29 +1,35 @@
-body{
-	background-color: black;
+body {
+  background-color: black;
 }
-.encabezado{
-	/* align-items: center; */
-	margin: auto;
-	text-align: right;
-	color: brown;
+.encabezado {
+  /* align-items: center; */
+  margin: auto;
+  text-align: right;
+  color: brown;
 }
-h1, .titulo1{
-	color: orangered;
-	text-align: center;
+h1,
+.titulo1 {
+  color: orangered;
+  text-align: center;
 }
-h2, .titulo2{
-	color: white;
+h2,
+.titulo2 {
+  color: white;
 }
-.titulo3{
-	color: sandybrown;
+.titulo3 {
+  color: sandybrown;
 }
-.soporte{
-	color:aqua;
-	text-align: center;
+.soporte {
+  color: aqua;
+  text-align: center;
 }
-.btncentro{
-	text-align: center;
+.btncentro {
+  text-align: center;
 }
-a.btn1{
-	background-color: orangered;
+a.btn1 {
+  background-color: orangered;
+}
+
+button.smallBtn {
+  font-size: 8px;
 }
