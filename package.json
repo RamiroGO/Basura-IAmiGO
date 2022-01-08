@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Deploy de Node App a Vercel",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "start": "nodemon --exec \"node --import ts-node/register --inspect index.js\"",
-    "build": "nodemon --exec \"node --import ts-node/register --inspect index.js\"",
-    "vercel-build": "node ./index.js"
+    "start": "nodemon --exec \"node --require ts-node/register --inspect index.js\"",
+    "start-commonjs": "nodemon index.js",
+    "vercel-build": "node index.js"
   },
   "keywords": [],
   "author": "",

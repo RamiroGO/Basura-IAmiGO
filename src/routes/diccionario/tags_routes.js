@@ -1,15 +1,15 @@
-import express from "express";
-import { conceptos, intenciones, ventas } from "../../database/diccionario.js";
-import { neuro_atributo } from '../../models/neurona.js';
+const express = require('express');
+const diccionario = require('../../database/diccionario');
+const neurona = require('../../models/neurona.js');
 
 const router = express.Router();
 /**
- * Obtener una lista de los nombres de los Conceptos
+ * Obtener una lista de los nombres de los Diccionario.Conceptos
  */
 router.get('/tags/list_names', (_req, res) => {
 	// Obtener una lista de todos los nombres de los conceptos listados
 	let listNames_dictionaryConcepto = [];
-	conceptos.forEach((_concepto) => {
+	diccionario.conceptos.forEach((_concepto) => {
 		listNames_dictionaryConcepto.push(_concepto._nombre);
 	});
 	// Enviar 
@@ -24,11 +24,11 @@ router.get('/tags/:nameTag', (req, res) => {
 	let atributos_concepto;
 	let encontrado = false;
 	// Búsqueda del Tag pedido
-	for (let indexTag = 0; !encontrado && indexTag != conceptos.length; indexTag++)
+	for (let indexTag = 0; !encontrado && indexTag != diccionario.conceptos.length; indexTag++)
 		// Buscar por su nombre
-		if (conceptos[indexTag]._nombre == req.params.nameTag) {
+		if (diccionario.conceptos[indexTag]._nombre == req.params.nameTag) {
 			// Guardar sus parámetros
-			atributos_concepto = conceptos[indexTag].atributo;
+			atributos_concepto = diccionario.conceptos[indexTag].atributo;
 			// Marcar como encontrado
 			encontrado = true;
 
@@ -49,7 +49,7 @@ router.get('/intenciones', (req, res) => {
 
 	// Obtener una lista de todos los nombres de los contexto listados
 	let listNames_dictionaryIntenciones = [];
-	intenciones.forEach((_intencion) => {
+	diccionario.intenciones.forEach((_intencion) => {
 		listNames_dictionaryIntenciones.push(_intencion.nombre);
 	});
 	// Enviar 
@@ -64,11 +64,11 @@ router.get('/intencion/:paramsIntencion', (req, res) => {
 	let atributos_concepto;
 	let encontrado = false;
 	// Búsqueda del Tag pedido
-	for (let indexTag = 0; !encontrado && indexTag != conceptos.length; indexTag++)
+	for (let indexTag = 0; !encontrado && indexTag != diccionario.conceptos.length; indexTag++)
 		// Buscar por su nombre
-		if (conceptos[indexTag]._nombre == req.params.paramsIntencion) {
+		if (diccionario.conceptos[indexTag]._nombre == req.params.paramsIntencion) {
 			// Guardar sus parámetros
-			atributos_concepto = conceptos[indexTag].atributo;
+			atributos_concepto = diccionario.conceptos[indexTag].atributo;
 			// Marcar como encontrado
 			encontrado = true;
 
@@ -93,4 +93,4 @@ router.get('/ventas', (req, res) => {
 	res.send(ventas);
 });
 
-export default router;
+module.exports = router;

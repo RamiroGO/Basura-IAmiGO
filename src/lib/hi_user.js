@@ -13,7 +13,7 @@ let actual_user = {
 	id: 0
 };
 
-export function SignIn(user) {
+function SignIn(user) {
 	// Modificar el Usuario Actual
 	actual_user.nombre = user.nombre;
 	actual_user.contra = user.contra;
@@ -21,8 +21,8 @@ export function SignIn(user) {
 
 	// Enviar la información del acceso del usuario al historial del servidor.
 	history_users_log.push(actual_user);
-}
-export function isAuthenticated() {
+};
+function isAuthenticated() {
 	let is_authenticated = false;
 
 	// Comprobación de usuario actual válido para autenticación.
@@ -38,8 +38,9 @@ export function isAuthenticated() {
 		}
 	}
 	return is_authenticated;
-}
-export function id_user() {
+};
+
+module.exports = function id_user() {
 	return ({
 		id_user: actual_user.id
 	});

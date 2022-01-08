@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
-
-// import * as hi_userJs from "../../lib/hi_user.js";
-// import * as register_databaseJs from '../../lib/register_database.js';
+import * as hi_userJs from "../../lib/hi_user.js";
+import * as register_databaseJs from '../../lib/register_database.js';
 
 // Para elaborar consultas async
-// import { promisify } from 'util';
-// const sleep = promisify(setTimeout);
+import { promisify } from 'util';
+const sleep = promisify(setTimeout);
 
 // Solo se debe implementar en las rutas que se desean proteger, no en las rutas de acceso.
-// import { isNotLoggedIn } from "../../lib/is_logged.js";
+import { isNotLoggedIn } from "../../lib/is_logged.js";
 
 // Para los post no se usa el 'render', sino el 'redirect'
 // Los post en el HTML solo son capaces de enviar objetos a través de las rutas HTTP
@@ -18,7 +17,7 @@ const router = express.Router();
 
 // Ruta para Registrar los datos del formulario 'SignUp'
 // ('req', 'res') ={ } Los Request y Responses son innecesarios.
-router.post("/signup", (req, res) => {
+router.post("/signup", isNotLoggedIn, (req, res) => {
 	console.log("Route POST signup NotLog: Authentication");
 	console.log("Si el usuario otorga información al servidor es para que este le reconozca.");
 	console.log(" si el usuario no tiene un distintivo, el servidor le ofrecerá uno");
@@ -45,7 +44,7 @@ router.post("/signup", (req, res) => {
 
 // Ruta para acceder con los datos ya ingresados en la página SignIn
 // Dado que esto es un Middleware, se ejecuta antes que el resto de rutas, y su declaración hace uso de la función 'next'.
-router.post("/signin", (req, res) => {
+router.post("/signin", isNotLoggedIn, (req, res) => {
 	console.log("Route POST signin NotLog: Authentication");
 	console.log("Ruta de página de Acceso/Log para entrar en una cuenta ya existente");
 
@@ -59,4 +58,4 @@ router.post("/signin", (req, res) => {
 	register_databaseJs.Redirect_IsValidUser(req, opc_routes, res);
 });
 
-module.exports = router;
+export default router;
