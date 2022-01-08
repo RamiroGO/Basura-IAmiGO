@@ -1,14 +1,14 @@
-const express = require('express');
+import * as express from 'express';
 const router = express.Router();
-const { user_log } = require("../../lib/hi_user.cjs");
-const { register_database, Redirect_IsValidUser } = require('../../lib/register_database.cjs');
+import * as hi_userJs from "../../lib/hi_user.js";
+import * as register_databaseJs from '../../lib/register_database.js';
 
 // Para elaborar consultas async
-const util = require('util');
-const sleep = util.promisify(setTimeout);
+import { promisify } from 'util';
+const sleep = promisify(setTimeout);
 
 // Solo se debe implementar en las rutas que se desean proteger, no en las rutas de acceso.
-const { isNotLoggedIn } = require("../../lib/is_logged");
+import { isNotLoggedIn } from "../../lib/is_logged.js";
 
 // Para los post no se usa el 'render', sino el 'redirect'
 // Los post en el HTML solo son capaces de enviar objetos a través de las rutas HTTP
@@ -33,7 +33,7 @@ router.post("/signup", isNotLoggedIn, (req, res) => {
 	};
 
 	// Generando Objeto con los elementos necesarios para ser enviado a la database.
-	const _register_database = new register_database(Fields_Database_User);
+	const _register_database = new register_databaseJs.register_database(Fields_Database_User);
 
 	// Guardar en la Base de Datos
 	req.body.user = _register_database.saveUserMySQL(() => {
@@ -55,7 +55,7 @@ router.post("/signin", isNotLoggedIn, (req, res) => {
 	};
 
 	// Comparar en la Base de Datos
-	Redirect_IsValidUser(req, opc_routes, res);
+	register_databaseJs.Redirect_IsValidUser(req, opc_routes, res);
 });
 
-module.exports = router;
+export default router;

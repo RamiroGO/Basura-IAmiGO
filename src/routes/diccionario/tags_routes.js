@@ -1,15 +1,14 @@
-const express = require('express');
-const router = express.Router();
-import { conceptos, intenciones, ventas } from "../../database/diccionario";
-import { Response } from "express";
-import { neuro_atributo } from '../../models/neurona';
+import express from "express";
+import { conceptos, intenciones, ventas } from "../../database/diccionario.js";
+import { neuro_atributo } from '../../models/neurona.js';
 
+const router = express.Router();
 /**
  * Obtener una lista de los nombres de los Conceptos
  */
-router.get('/tags/list_names', (_req: any, res: { send: (arg0: any[]) => void; }) => {
+router.get('/tags/list_names', (_req, res) => {
 	// Obtener una lista de todos los nombres de los conceptos listados
-	let listNames_dictionaryConcepto: any[] = [];
+	let listNames_dictionaryConcepto = [];
 	conceptos.forEach((_concepto) => {
 		listNames_dictionaryConcepto.push(_concepto._nombre);
 	});
@@ -19,7 +18,7 @@ router.get('/tags/list_names', (_req: any, res: { send: (arg0: any[]) => void; }
 /**
  * Enviamos los parámetros correspondientes al Tag que se está consultando
  */
-router.get('/tags/:nameTag', (req: { params: { nameTag: string; }; }, res: { setHeader: (arg0: string, arg1: string) => void; json: (arg0: neuro_atributo[]) => void; send: (arg0: string) => void; }) => {
+router.get('/tags/:nameTag', (req, res) => {
 
 	// Valores por Default
 	let atributos_concepto;
@@ -46,10 +45,10 @@ router.get('/tags/:nameTag', (req: { params: { nameTag: string; }; }, res: { set
 /**
  * Obtener una lista de los nombres de los 'intenciones'
  */
-router.get('/intenciones', (req: any,res: { send: (arg0: any[]) => void; }) => {
+router.get('/intenciones', (req, res) => {
 
-// Obtener una lista de todos los nombres de los contexto listados
-	let listNames_dictionaryIntenciones: any[] = [];
+	// Obtener una lista de todos los nombres de los contexto listados
+	let listNames_dictionaryIntenciones = [];
 	intenciones.forEach((_intencion) => {
 		listNames_dictionaryIntenciones.push(_intencion.nombre);
 	});
@@ -59,7 +58,7 @@ router.get('/intenciones', (req: any,res: { send: (arg0: any[]) => void; }) => {
 /**
  * Enviamos los parámetros correspondientes al 'Contexto' que se está consultando
  */
-router.get('/intencion/:paramsIntencion', (req: { params: { paramsIntencion: string; }; }, res: { setHeader: (arg0: string, arg1: string) => void; json: (arg0: neuro_atributo[]) => void; send: (arg0: string) => void; }) => {
+router.get('/intencion/:paramsIntencion', (req, res) => {
 
 	// Valores por Default
 	let atributos_concepto;
@@ -83,9 +82,9 @@ router.get('/intencion/:paramsIntencion', (req: { params: { paramsIntencion: str
 		res.send("Mensage del Servidor: No Existe Tag");
 });
 
-router.get('/ventas', (req: any,res: { send: (arg0: any[]) => void; }) => {
+router.get('/ventas', (req, res) => {
 
-// Obtener una lista de todos los nombres de los contexto listados
+	// Obtener una lista de todos los nombres de los contexto listados
 	// let send_ventas: any[] = [];
 	// ventas.forEach((_producto) => {
 	// 	send_ventas.push(_producto.nombre);
@@ -94,4 +93,4 @@ router.get('/ventas', (req: any,res: { send: (arg0: any[]) => void; }) => {
 	res.send(ventas);
 });
 
-module.exports = router;
+export default router;

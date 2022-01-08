@@ -1,6 +1,6 @@
-const express = require('express');
-const { join } = require('path');
-const router = express.Router();
+import { Router } from 'express';
+import { join } from 'path';
+const router = Router();
 router.get('/propuestas/cure/:ext/:doc', (req, res) => {
 	// MIME type of your favicon.
 	// .ico = 'image/x-icon' or 'image/vnd.microsoft.icon'
@@ -17,4 +17,4 @@ router.get('/propuestas/cure/:doc', (req, res) => {
 	res.render('cure-propuesta/html/'+req.params.doc, { title: "About Page" });
 });
 
-module.exports = router;
+export default router;

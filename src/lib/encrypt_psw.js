@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs');
+import * as bcryptjs from 'bcryptjs';
 
 const encrypt_psw = {};
 
@@ -7,9 +7,9 @@ encrypt_psw.encryptPassword = async (password) => {
 	// A mas número de veces mejor será el encriptado.
 	const level_security = 10;
 	// Generar un patrón de cifrado
-	const salt = await bcrypt.genSalt(level_security);
+	const salt = await bcryptjs.genSalt(level_security);
 	// Ciframos la contraseña a partir del patrón.
-	const hashpass = bcrypt.hash(password, salt);
+	const hashpass = bcryptjs.hash(password, salt);
 	
 	return hashpass;
 }
@@ -19,7 +19,7 @@ encrypt_psw.encryptPassword = async (password) => {
 encrypt_psw.matchPassword = async (password, savedPassword) => {
 	try {
 		// Guardamos la función asíncrona en una promesa.
-		const fcn_compare = await bcrypt.compare(password, savedPassword);
+		const fcn_compare = await bcryptjs.compare(password, savedPassword);
 		// Ejecutamos la promesa.
 		return fcn_compare;
 	}
@@ -28,4 +28,4 @@ encrypt_psw.matchPassword = async (password, savedPassword) => {
 	}
 }
 
-module.exports = encrypt_psw;
+export default encrypt_psw;

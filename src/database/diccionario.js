@@ -1,8 +1,8 @@
-import { neuro_atributo, neuro_concepto, neuro_fundamen, neuro_etiquetas, neuro_intencion, neuro_venta } from '../models/neurona';
+import { neuro_atributo, neuro_concepto, neuro_fundamen, neuro_etiquetas, neuro_intencion, neuro_venta } from '../models/neurona.js';
 
 
 const
-	etiquetas_tipicas: neuro_etiquetas[] = [
+	etiquetas_tipicas=[ //: neuro_etiquetas[] = [
 		new neuro_etiquetas(["Persona", "Usuario", "Ingeniero"]),
 		new neuro_etiquetas(["Persona", "Inventada"]),
 		new neuro_etiquetas(["Sentidos", "Percepción"]),
@@ -18,10 +18,10 @@ const
 			[new neuro_atributo("Es", "Personaje Imaginario", "Ficción")],
 			[new neuro_atributo("Es", "Fruta", "Biología")],
 		],
-	atributos: neuro_atributo[] = [
+	atributos=[ //: neuro_atributo[] = [
 		new neuro_atributo("Tiene", "Color", "Sensación Visual")
 	],
-	conceptos: neuro_concepto[] = [
+	conceptos=[ //: neuro_concepto[] = [
 		new neuro_concepto("Ramiro", etiquetas_tipicas[0], atributos_tipics[0]),
 		new neuro_concepto("Lilia", etiquetas_tipicas[0], atributos_tipics[0]),
 		new neuro_concepto("Irma", etiquetas_tipicas[0], atributos_tipics[0]),
@@ -29,7 +29,7 @@ const
 		new neuro_concepto("Nico", etiquetas_tipicas[3], atributos_tipics[1]),
 		new neuro_concepto("Manzana", etiquetas_tipicas[4], atributos_tipics[4])
 	],
-	fundament: neuro_fundamen[] = [
+	fundament=[ //: neuro_fundamen[] = [
 		new neuro_fundamen("Suma", "Matemáticas", etiquetas_tipicas[5], ""),
 		new neuro_fundamen("Restar", "Matemáticas", etiquetas_tipicas[5], ""),
 		new neuro_fundamen("Multiplicar", "Matemáticas", etiquetas_tipicas[5], ""),
@@ -38,7 +38,7 @@ const
 		new neuro_fundamen("Derivar", "Matemáticas", etiquetas_tipicas[5], ""),
 		new neuro_fundamen("Factorizar", "Matemáticas", etiquetas_tipicas[5], "")
 	],
-	intenciones: neuro_intencion[] = [
+	intenciones=[ //: neuro_intencion[] = [
 		new neuro_intencion("Proyecto Cure", etiquetas_tipicas[5], ""),
 		new neuro_intencion("Proyecto Cursos", etiquetas_tipicas[5], ""),
 		new neuro_intencion("Editor de Fotos", etiquetas_tipicas[5], ""),
@@ -49,7 +49,7 @@ const
 		new neuro_intencion("Pendientes", etiquetas_tipicas[5], ""),
 		new neuro_intencion("Información", etiquetas_tipicas[5], "")
 	],
-	ventas: neuro_venta[] = [
+	ventas=[ //: neuro_venta[] = [
 		new neuro_venta("Comedor", 350000, 40),
 		new neuro_venta("Juego de Sala", 350000, 40),
 		new neuro_venta("Sala+Comedor", 600000, 40),
@@ -61,4 +61,5 @@ const
  * Pato: 260 => 170:155
 Enfriador 550 => 450:400
  */
+// module.exports = { atributos, conceptos, fundament, intenciones, ventas };
 export { atributos, conceptos, fundament, intenciones, ventas };

@@ -1,12 +1,12 @@
-const mysql = require('mysql');
+import { createPool } from 'mysql';
 // Para elaborar consultas async
-const { promisify } = require('util');
-const databases = require('./keys.js');
+import { promisify } from 'util';
+import { list_user } from './keys.js';
 
 // En lugar de createConnetion se usa createPool para que las conexiones se ejecuten en secuencia.
 // Desventaja: Este módulo te obliga a hacer uso del CallBack, por tanto, No se puede hacer uso del sync await.
 // Solución: hacer uso del parámetro 'promisify' en el módulo de NodeJS llamado 'util'.
-const connect_mysql = mysql.createPool(databases.list_user);
+const connect_mysql = createPool(list_user);
 
 // Mensajes de error generalizados.
 connect_mysql.getConnection((err, connection) => {
@@ -34,4 +34,4 @@ connect_mysql.getConnection((err, connection) => {
 // Convertir código de Call Back a código de Promesa.
 connect_mysql.query = promisify(connect_mysql.query);
 
-module.exports = connect_mysql;
+export default connect_mysql;

@@ -1,5 +1,3 @@
-import { type } from "os";
-
 type Etiqueta
 	= "Usuario"
 	| "Comida"
@@ -67,6 +65,7 @@ type Tipo
 	| "IsEnte"
 	| "IsVerbo"
 	| "IsConector";
+
 type Copula = "Es" | "Tiene" | "Hace" | "Resultado" | "Postura";
 
 type Fundamento

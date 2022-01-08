@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+const router = Router();
 
 // Solo se debe implementar en las rutas que se desean proteger, no en las rutas de acceso.
-const { isLoggedIn, isNotLoggedIn } = require("../../lib/is_logged");
+import { isLoggedIn, isNotLoggedIn } from "../../lib/is_logged.js";
 
 // Se requieren dos enrutadores para hacer un Acceso de Usuario 'SignUp'
 // Rutas para visualizar el HTML de las Views.
@@ -41,4 +41,4 @@ router.get('/logout', isLoggedIn, (req, res) => {
 	res.redirect('/acceso');
 });
 
-module.exports = router;
+export default router;
