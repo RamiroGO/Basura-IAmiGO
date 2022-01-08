@@ -1,31 +1,38 @@
 {
   "name": "iamigo-app",
   "version": "1.0.0",
-  "description": "Deploy de Node App a Vercel",
+  "description": "",
   "main": "index.js",
-  "type": "commonjs",
+  "directories": {
+    "doc": "docs"
+  },
   "scripts": {
-    "start": "nodemon --exec \"node --require ts-node/register --inspect index.js\"",
-    "start-commonjs": "nodemon index.js",
     "vercel-build": "node index.js",
-    "vercel-start": "node index.js"
+    "build": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RamiroGO/IAmiGO.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RamiroGO/IAmiGO/issues"
+  },
+  "homepage": "https://github.com/RamiroGO/IAmiGO#readme",
   "dependencies": {
-    "@types/express": "^4.17.13",
     "bcryptjs": "^2.4.3",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "path": "^0.12.7",
-    "util": "^0.12.4"
+    "util": "^0.12.4",
+    "vercel": "^23.1.2"
   },
   "devDependencies": {
-    "@types/node": "^17.0.8",
-    "nodemon": "^2.0.15",
-    "ts-node": "^10.4.0"
+    "nodemon": "^2.0.15"
   }
 }

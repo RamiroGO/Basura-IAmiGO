@@ -1,11 +1,11 @@
-const express = require('express');
-const morgan = require('morgan');
+let express = require('express');
+let morgan = require('morgan');
 let path = require('path');
 let app = express();
 
 // Configurar el Puerto, en caso de no establecerse ninguno,
 //  establecer un valor por defecto 
-const PORT = process.env.PORT || 3000;
+let PORT = process.env.PORT || 3000;
 // Settings
 // Guardamos el valor del puerto en una variable contenida dentro de 'app'
 app.set('port', PORT);
@@ -28,10 +28,10 @@ app.use(express.static(path.join(__dirname, 'views/public/css')));
 app.use(express.static(path.join(__dirname, 'views/')));
 
 // Rutas de URL del Cliente y Comandos
-// app.use(require('./routes/authentications/post.js'));
+app.use(require('./routes/authentications/post.js'));
 app.use(require('./routes/authentications/get.js'));
-// app.use(require('./routes/aplicaciones/get'));
-// app.use(require('./routes/propuestas/cure_routes.js'));
+app.use(require('./routes/aplicaciones/get'));
+app.use(require('./routes/propuestas/cure_routes.js'));
 app.use(require('./routes/diccionario/tags_routes.js'));
 app.use(require('./routes/routes.js'));
 

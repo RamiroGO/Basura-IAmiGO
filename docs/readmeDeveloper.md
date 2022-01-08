@@ -1,8 +1,10 @@
 ## 1. Ejecutar el Servidor con Nodemon
 ### En la carpeta package.json, buscaremos:
-"scripts": {
+  "scripts": {
+    "vercel-build": "node index.js",
+    "build": "nodemon index.js",
     "start": "node index.js"
-  },
+  }
 ### Este nos indicará dos cosas, el comando que se debe usar para ejecutar el archivo y la ubicación del archivo que se va a ejecutar con dicho comando
 ### Hay que escribir en la terminal "npm run" + nombre del comando correspondiente con la ejecución del archivo:
 npm run start
@@ -38,13 +40,14 @@ git push
 npm init -y
 
 ### Instalar Dependencias del Proyecto:
-npm install express ejs morgan
+npm install express ejs morgan vercel bcryptjs util mysql
 
 ### Instalar Dependencias de Desarrollo: Para evitar el tener que reiniciar el servidor por cada modificación.
 npm install nodemon -D
 
 ### Instalar paquete para subir a un servidor de manera global
-npm install -g now
+<!-- npm install -g now -->
+npm install -g vercel
 
 ### Habilitar la ejecución de ps1 (https://www.blai.blog/2019/05/habilitar-ejecucion-de-archivos-ps1-en.html) para poder hacer uso de los comandos de 'now' y subir el proyecto a un servidor
 Set-ExecutionPolicy -Scope LocalMachine unrestricted
