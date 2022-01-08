@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Poblar las opciones del select 'id_sel_tag'  
   // Peticiones al Servidor: Hace una petición al servidor, pidiendo por las opciones en el select.
   // Descargar datos de la base de datos con una petición del servidor
-  fetch(document.URL.substring(0, document.URL.length - 6).concat('intenciones'))
+  fetch(document.URL.substring(0, document.URL.length - 6).concat('intenciones/nombres'))
     // Llevar los datos recibidos al elemento de selección en el HTML
     // Convertir la respuesta en un Objeto JSON
     .then(list_areas => list_areas.json())

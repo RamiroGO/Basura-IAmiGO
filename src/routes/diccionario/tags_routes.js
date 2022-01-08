@@ -45,7 +45,7 @@ router.get('/tags/:nameTag', (req, res) => {
 /**
  * Obtener una lista de los nombres de los 'intenciones'
  */
-router.get('/intenciones', (req, res) => {
+router.get('/intenciones/nombres', (req, res) => {
 
 	// Obtener una lista de todos los nombres de los contexto listados
 	let listNames_dictionaryIntenciones = [];
@@ -58,7 +58,7 @@ router.get('/intenciones', (req, res) => {
 /**
  * Enviamos los parámetros correspondientes al 'Contexto' que se está consultando
  */
-router.get('/intencion/:paramsIntencion', (req, res) => {
+router.get('/intencion/:nombre', (req, res) => {
 
 	// Valores por Default
 	let atributos_concepto;
@@ -66,7 +66,7 @@ router.get('/intencion/:paramsIntencion', (req, res) => {
 	// Búsqueda del Tag pedido
 	for (let indexTag = 0; !encontrado && indexTag != diccionario.conceptos.length; indexTag++)
 		// Buscar por su nombre
-		if (diccionario.conceptos[indexTag]._nombre == req.params.paramsIntencion) {
+		if (diccionario.conceptos[indexTag]._nombre == req.params.nombre) {
 			// Guardar sus parámetros
 			atributos_concepto = diccionario.conceptos[indexTag].atributo;
 			// Marcar como encontrado
@@ -83,14 +83,8 @@ router.get('/intencion/:paramsIntencion', (req, res) => {
 });
 
 router.get('/ventas', (req, res) => {
-
-	// Obtener una lista de todos los nombres de los contexto listados
-	// let send_ventas: any[] = [];
-	// ventas.forEach((_producto) => {
-	// 	send_ventas.push(_producto.nombre);
-	// });
 	// Enviar 
-	res.send(ventas);
+	res.send(diccionario.ventas);
 });
 
 module.exports = router;

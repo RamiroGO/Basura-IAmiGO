@@ -28,10 +28,10 @@ app.use(express.static(path.join(__dirname, 'views/public/css')));
 app.use(express.static(path.join(__dirname, 'views/')));
 
 // Rutas de URL del Cliente y Comandos
-app.use(require('./routes/authentications/post.js'));
+// app.use(require('./routes/authentications/post.js'));
 app.use(require('./routes/authentications/get.js'));
-app.use(require('./routes/aplicaciones/get'));
-app.use(require('./routes/propuestas/cure_routes.js'));
+// app.use(require('./routes/aplicaciones/get'));
+// app.use(require('./routes/propuestas/cure_routes.js'));
 app.use(require('./routes/diccionario/tags_routes.js'));
 app.use(require('./routes/routes.js'));
 
@@ -39,4 +39,6 @@ app.use(require('./routes/routes.js'));
 app.listen(app.get('port'), function () {
     console.log('Server on Port', app.get('port'));
 });
+
+// Exportar módulo usando 'CommonJS'
 module.exports = app;
