@@ -7,8 +7,7 @@
   "scripts": {
     "start": "nodemon --exec \"node --import ts-node/register --inspect index.js\"",
     "build": "nodemon --exec \"node --import ts-node/register --inspect index.js\"",
-    "vercel-build": "nodemon --exec \"node --import ts-node/register --inspect index.js\"",
-    "strict": "node ./index.js"
+    "vercel-build": "node ./index.js"
   },
   "keywords": [],
   "author": "",
