@@ -1,59 +1,99 @@
-type Tipo = "IsDato" | "IsAdjetivo" | "IsEnte" | "IsVerbo" | "IsConector";
-type Copula = "Es" | "Tiene" | "Hace" | "Resultado" | "Postura";
+import { Etiqueta, Copula, Contexto, Fundamento } from './etiquetas_diccionario'
 
-class neuro_etiqueta {
-  list_etique: string[] = [];
-  constructor(list_etiquetas: string[]) {
+export class neuro_etiquetas {
+  // Propiedades de la Clase
+  list_etique: Etiqueta[] = [];
+  constructor(list_etiquetas: Etiqueta[]) {
     this.list_etique = list_etiquetas;
   }
 }
-class neuro_concepto {
-  public nombre: string;
-	
-  public etique: neuro_etiqueta;
-	
-  constructor(nombre: string, etiqueta: neuro_etiqueta) {
-    this.nombre = nombre;
-    this.etique = etiqueta;
-	}
-	
+
+export class neuro_concepto {
+  // Propiedades de la Clase
+  public _nombre: string;
+  private _etique: neuro_etiquetas;
+  private _atribu: neuro_atributo[];
+  
+  // Get Methods: 
+  public get etiqueta(): Etiqueta[] {
+    return this._etique.list_etique;
+  }
+  public get atributo(): neuro_atributo[] {
+    return this._atribu;
+  }
+
+  constructor(nombre: string, etiqueta: neuro_etiquetas, atributos: neuro_atributo[]) {
+    this._nombre = nombre;
+    this._etique = etiqueta;
+    this._atribu = atributos;
+  }
+
 }
 
-class neuro_atributo {
+export class neuro_atributo {
+  // Propiedades de la Clase
   copula: Copula;
-  params: neuro_etiqueta;
-  contex: neuro_etiqueta;
+  params: Etiqueta;
+  contex: Contexto;
   /**
    *
    * @param {Copula} Copula Es, Tiene, Hace, Resultado, Postura.
    * @param {Parametros} Parametros Nombre de la Etiqueta que se empleará como parámetro.
    * @param {Contextos} Contextos Etiquetas que hacen referencia al conjunto de los Fundamentos a emplear.
    */
-  constructor(Copula: Copula, Parametros: neuro_etiqueta, Contextos: neuro_etiqueta) {
+  constructor(Copula: Copula, Parametros: Etiqueta, Contextos: Contexto) {
     this.copula = Copula;
     this.params = Parametros;
     this.contex = Contextos;
   }
 }
 
-class neuro_fundamen {
-  public etique: any;
-  private contex: any;
-  private relaci: any;
+export class neuro_fundamen {
+  // Propiedades de la Clase
+  public nombre: Fundamento;
+  public contex: Contexto;
+  public criter: neuro_etiquetas;
+  private relaci: string;
   constructor(
-    Etiquetas: neuro_etiqueta,
-    Contextos: neuro_etiqueta,
+    Nombre: Fundamento,
+    Contextos: Contexto,
+    Criterio: neuro_etiquetas,
     Relaciones: string
   ) {
-    this.etique = Etiquetas;
+    this.nombre = Nombre;
     this.contex = Contextos;
+    this.criter = Criterio;
+    this.relaci = Relaciones;
+  }
+}
+export class neuro_intencion {
+  // Propiedades de la Clase
+  public nombre: Contexto;
+  public criter: neuro_etiquetas;
+  private relaci: string;
+  constructor(
+    Nombre: Contexto,
+    Criterios: neuro_etiquetas,
+    Relaciones: string
+  ) {
+    this.nombre = Nombre;
+    this.criter = Criterios;
     this.relaci = Relaciones;
   }
 }
 
-export {
-  neuro_concepto,
-  neuro_atributo,
-  neuro_etiqueta,
-  neuro_fundamen,
-};
+export class neuro_venta {
+  // Propiedades de la Clase
+  public nombre: String;
+  public valor_mercado: number;
+  public indice_depreciacion: number;
+  constructor(
+    Nombre: String,
+    Val_Mercado: number,
+    indice_depreciacion: number
+  ) {
+    this.nombre = Nombre;
+    this.valor_mercado = Val_Mercado;
+    this.indice_depreciacion = indice_depreciacion;
+  }
+}

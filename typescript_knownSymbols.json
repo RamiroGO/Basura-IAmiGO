@@ -1,0 +1,58 @@
+{
+	"knownSymbols": {
+		"Response": [
+			{
+				"name": "Response",
+				"module": "express",
+				"isDefault": false
+			}
+		],
+		"neuro_etiquetas": [
+			{
+				"name": "neuro_etiquetas",
+				"path": "c:\\Users\\10\\OneDrive\\Programacion\\Visual_Studio_Code\\IAmiGO-App\\src\\models\\neurona.ts",
+				"type": "class",
+				"isDefault": false
+			}
+		],
+		"neuro_concepto": [
+			{
+				"name": "neuro_concepto",
+				"path": "c:\\Users\\10\\OneDrive\\Programacion\\Visual_Studio_Code\\IAmiGO-App\\src\\models\\neurona.ts",
+				"type": "class",
+				"isDefault": false
+			}
+		],
+		"neuro_atributo": [
+			{
+				"name": "neuro_atributo",
+				"path": "c:\\Users\\10\\OneDrive\\Programacion\\Visual_Studio_Code\\IAmiGO-App\\src\\models\\neurona.ts",
+				"type": "class",
+				"isDefault": false
+			}
+		],
+		"neuro_fundamen": [
+			{
+				"name": "neuro_fundamen",
+				"path": "c:\\Users\\10\\OneDrive\\Programacion\\Visual_Studio_Code\\IAmiGO-App\\src\\models\\neurona.ts",
+				"type": "class",
+				"isDefault": false
+			}
+		],
+		"neuro_intencion": [
+			{
+				"name": "neuro_intencion",
+				"path": "c:\\Users\\10\\OneDrive\\Programacion\\Visual_Studio_Code\\IAmiGO-App\\src\\models\\neurona.ts",
+				"type": "class",
+				"isDefault": false
+			}
+		],
+		"type": [
+			{
+				"name": "type",
+				"module": "os",
+				"isDefault": false
+			}
+		]
+	}
+}

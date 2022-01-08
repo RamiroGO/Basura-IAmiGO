@@ -1,6 +1,6 @@
-const connect_mysql = require("../database/connect_mysql");
+const connect_mysql = require("../database/connect_mysql.cjs");
 const encrypt_psw = require("./encrypt_psw.js");
-const { SignIn } = require("./hi_user");
+const { SignIn } = require("./hi_user.cjs");
 
 module.exports = {
 	register_database: class {

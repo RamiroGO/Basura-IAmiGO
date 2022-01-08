@@ -1,5 +1,6 @@
 body {
   background-color: black;
+  /* margin: 0; */
 }
 .encabezado {
   /* align-items: center; */
@@ -32,4 +33,11 @@ a.btn1 {
 
 button.smallBtn {
   font-size: 8px;
+}
+
+footer {
+  height: 110px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }

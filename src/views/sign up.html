@@ -10,30 +10,64 @@
   <!-- Barra de Navegación -->
   <%- include ('./partials/navigation'); %>
 
-  <!-- Cuadro de selección del tag para especificar el tipo de dato a ingresar -->
-  <div class="text-center card-body col-md-4 mx-auto animate__bounceIn card">
-    <label for="idSelectArea">
-      Seleccione Etiquetas
-    </label>
-    <select id="id_sel_tag" name="nameArea" style="text-align: center;" onselect="insert_tag(document.getElementById('id_sel_tag').selectedIndex)">
-      <option>--Seleccionar--</option>
-    </select>
-  </div>
-
-  <!-- Cuadro para establecer los valores correspondientes a los parámetros dados por el tag insertado -->
-  <div class="text-center card-body col-md-4 mx-auto animate__bounceIn card" id="div_hidden_list_tags" hidden=true>
-    <table class="table table-hover table-bordered table-dark table-striped">
-      <thead>
-        <tr>
-          <th colspan="3">
-            <label>Etiquetas seleccionadas</label>
-          </th>
-        </tr>
-      </thead>
-      <tbody id="list_tags">
-      </tbody>
-    </table>
-  </div>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <table class="mx-auto">
+    <thead></thead>
+    <tbody>
+      <tr>
+        <!-- Cuadro de selección del tag para especificar el tipo de dato a ingresar -->
+        <td>
+          <div class="text-center card-body mx-auto animate__bounceIn
+                  card">
+            <label for="idSelectArea">
+              Seleccione Etiquetas
+            </label>
+            <select id="id_sel_tag" name="nameArea" style="text-align: center;" onselect="insert_tag(document.getElementById('id_sel_tag').selectedIndex)">
+              <option>--Seleccionar--</option>
+              <!-- 
+                  Lista de Elementos-Etiquetas Brindadas por el Servidor
+                 -->
+            </select>
+            <div>
+              <input type="button" class="btn btn-light btn-outline-dark btn-sm" style="margin-top: 3px;" id="btn_set_tag" value="Establecer" hidden=true></input>
+            </div>
+          </div>
+        </td>
+        <td>
+          <!-- Lista de Etiquetas Cargadas para el Usuario -->
+          <div class="text-center card card-body mx-auto animate__bounceIn" id="div_hidden_list_atrib" hidden=true>
+            <table class="mainmenu text-black">
+              <thead></thead>
+              <tbody id="list_tags">
+                <!-- 
+                  Lista de Elementos-Etiquetas Insertados por el Usuario
+                 -->
+              </tbody>
+            </table>
+            <input type="button" class="btn btn-light btn-outline-dark btn-sm" style="margin-top: 3px;" id="btn_get_tag" value="Aceptar" hidden=true></input>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <!-- Cuadro para establecer los valores correspondientes a los parámetros dados por el tag insertado -->
+          <div class="text-center card card-body col-md-4 mx-auto animate__bounceIn" id="div_hidden_list_param" hidden=true>
+            <table class="table table-hover table-bordered table-dark table-striped">
+              <thead>
+                <tr>
+                  <th colspan="3">
+                    <label>Etiquetas seleccionadas</label>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
   <!-- FOOTER -->
   <%- include('./partials/footer.ejs');%>

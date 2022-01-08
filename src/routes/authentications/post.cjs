@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { user_log } = require("../../lib/hi_user");
-const { register_database, Redirect_IsValidUser } = require('../../lib/register_database');
+const { user_log } = require("../../lib/hi_user.cjs");
+const { register_database, Redirect_IsValidUser } = require('../../lib/register_database.cjs');
 
 // Para elaborar consultas async
 const util = require('util');

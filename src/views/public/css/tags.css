@@ -1,0 +1,19 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+.nav2 {
+  background-color: #00457C;
+  height: 50px;
+  width: 100%;
+}
+.mainmenu {
+  list-style: none;
+  color: white;
+}
+ul {
+  float: right;
+  margin-left: 20px;
+  margin-right: 25px;
+  margin-top: 10px;
+}
