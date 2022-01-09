@@ -49,5 +49,11 @@ npm install nodemon -D
 <!-- npm install -g now -->
 npm install -g vercel
 
+
+### Usar Heroku:
+#### Instalar el Programa de Heroku desde la página y seguir instrucciones:
+heroku create
+git push heroku main
+
 ### Habilitar la ejecución de ps1 (https://www.blai.blog/2019/05/habilitar-ejecucion-de-archivos-ps1-en.html) para poder hacer uso de los comandos de 'now' y subir el proyecto a un servidor
 Set-ExecutionPolicy -Scope LocalMachine unrestricted
