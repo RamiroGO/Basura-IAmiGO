@@ -1,4 +1,3 @@
-// import { neuro_atributo, neuro_concepto, neuro_fundamen, neuro_etiquetas, neuro_intencion, neuro_venta } from '';
 const neuro_etiquetas = require('../models/neurona.js').neuro_etiquetas;
 const neuro_atributo = require('../models/neurona.js').neuro_atributo;
 const neuro_concepto = require('../models/neurona.js').neuro_concepto;
@@ -67,4 +66,3 @@ const
 Enfriador 550 => 450:400
  */
 module.exports = { atributos, conceptos, fundament, intenciones, ventas };
-// export { atributos, conceptos, fundament, intenciones, ventas };

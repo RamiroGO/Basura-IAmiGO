@@ -13,38 +13,111 @@
   <canvas id="myCanvas" style="border:1px solid black;"></canvas>
   <canvas id="myCanvas2" style="border:1px solid greenyellow;"></canvas>
   <script languaje="javascript">
-    let imageLoad = new Image();
+    let imageLoad = new Image(),
+      contextCanvas1 = document.getElementById('myCanvas'),
+      contextCanvas2 = document.getElementById('myCanvas2');
     imageLoad.src = document.getElementById('imagen').src;
+    // Evento que se ejecuta cuando la imagen sea cargada al elemento img en el HTML
     imageLoad.onload = () => {
-      let
-        canvas1 = document.getElementById('myCanvas'),
-        canvas2 = document.getElementById('myCanvas2'),
-        ctxCanvas1 = canvas1.getContext('2d'),
-        ctxCanvas2 = canvas2.getContext('2d');
+      filtro1();
+    }
 
-      canvas1.width = imageLoad.width;
-      canvas2.width = imageLoad.width;
-      canvas1.height = imageLoad.height;
-      canvas2.height = imageLoad.height;
+    // Estrategia de Procesamiento de Imágenes #1
+    function filtro1() {
+      // Declara variables locales
+      let
+        ctxCanvas1 = contextCanvas1.getContext('2d'),
+        ctxCanvas2 = contextCanvas2.getContext('2d'),
+        canvas1,
+        canvas2,
+        val_R,
+        val_G,
+        val_B,
+        avg_rgb,
+        rel_RG,
+        rel_RB,
+        rel_GB,
+        rel_BG,
+        rel_R_Avg_min;
+
+      // Coincidir dimensiones de la imagen original
+      contextCanvas1.width = imageLoad.width;
+      contextCanvas2.width = imageLoad.width;
+      contextCanvas1.height = imageLoad.height;
+      contextCanvas2.height = imageLoad.height;
 
       ctxCanvas1.drawImage(imageLoad, 0, 0);
 
+      // Capturar imagen en un elemento Canvas para poder obtener sus datos.
+      canvas1 = ctxCanvas1.getImageData(0, 0, imageLoad.width, imageLoad.height).data;
+      // Prepara el segundo canvas para almacenar el resultado del procesamiento.
+      canvas2 = ctxCanvas2.createImageData(imageLoad.width, imageLoad.height);
+
+      // Recorrido de pixeles en la imagen.
+      for (let i = 0; i != canvas1.length; i += 4) {
+        // Obtener valores RGB de cada pixel la de la imagen.
+        val_R = canvas1[i + 0];
+        val_G = canvas1[i + 1];
+        val_B = canvas1[i + 2];
+
+        // Convertir Color a Gris
+        let gray_scale = (val_R + val_G + val_B) / 3;
+
+        if (gray_scale < 131) {
+          canvas2.data[i + 0] = gray_scale;
+          canvas2.data[i + 1] = gray_scale;
+          canvas2.data[i + 2] = gray_scale;
+        } else {
+          canvas2.data[i + 0] = 255;
+          canvas2.data[i + 1] = 255;
+          canvas2.data[i + 2] = 255;
+        }
+        // Cuarto parámetro de los pixeles, asociado a la trasparencia del pixel en la imagen.
+        canvas2.data[i + 3] = canvas1[i + 3];
+      }
+
+      // Cargar Imagen Resultante en el elemento correspondiente con el Canvas2 en el HTML
+      ctxCanvas2.putImageData(canvas2, 0, 0);
+    }
+    // Estrategia de Procesamiento de Imágenes #2
+    function filtro2() {
+      // Declara variables locales
       let
-        imgData_ctxCanvas1 = ctxCanvas1.getImageData(0, 0, canvas1.width, canvas1.height),
-        imgData_ctxCanvas2 = ctxCanvas2.createImageData(canvas1.width, canvas1.height);
+        ctxCanvas1 = contextCanvas1.getContext('2d'),
+        ctxCanvas2 = contextCanvas2.getContext('2d'),
+        imgData_ctxCanvas1,
+        imgData_ctxCanvas2,
+        val_R,
+        val_G,
+        val_B,
+        avg_rgb,
+        rel_RG,
+        rel_RB,
+        rel_GB,
+        rel_BG,
+        rel_R_Avg_min;
+
+      // Coincidir dimensiones de la imagen original
+      contextCanvas1.width = imageLoad.width;
+      contextCanvas2.width = imageLoad.width;
+      contextCanvas1.height = imageLoad.height;
+      contextCanvas2.height = imageLoad.height;
+
+      ctxCanvas1.drawImage(imageLoad, 0, 0);
+
+      imgData_ctxCanvas1 = ctxCanvas1.getImageData(0, 0, imageLoad.width, imageLoad.height);
+      imgData_ctxCanvas2 = ctxCanvas2.createImageData(imageLoad.width, imageLoad.height);
 
       for (let i = 0; i != imgData_ctxCanvas2.data.length; i += 4) {
-
-        let
-          val_R = imgData_ctxCanvas1.data[i + 0],
-          val_G = imgData_ctxCanvas1.data[i + 1],
-          val_B = imgData_ctxCanvas1.data[i + 2],
-          avg_rgb = (val_R + val_G + val_B) / 3,
-          rel_RG = val_R / val_G,
-          rel_RB = val_R / val_B,
-          rel_GB = (val_G / val_B),
-          rel_BG = (val_B / val_G),
-          rel_R_Avg_min = 1 * val_R / avg_rgb;
+        val_R = imgData_ctxCanvas1.data[i + 0];
+        val_G = imgData_ctxCanvas1.data[i + 1];
+        val_B = imgData_ctxCanvas1.data[i + 2];
+        avg_rgb = (val_R + val_G + val_B) / 3;
+        rel_RG = val_R / val_G;
+        rel_RB = val_R / val_B;
+        rel_GB = (val_G / val_B);
+        rel_BG = (val_B / val_G);
+        rel_R_Avg_min = 1.018 * val_R / avg_rgb;
 
         if (val_G < 20 && val_B < 20) {
           imgData_ctxCanvas2.data[i + 0] = 255;
@@ -53,9 +126,13 @@
         } else if (
           rel_RG > rel_R_Avg_min &&
           rel_RB > rel_R_Avg_min) {
-          imgData_ctxCanvas2.data[i + 0] = imgData_ctxCanvas1.data[i + 0];
-          imgData_ctxCanvas2.data[i + 1] = imgData_ctxCanvas1.data[i + 1];
-          imgData_ctxCanvas2.data[i + 2] = imgData_ctxCanvas1.data[i + 2];
+
+          // Convertir Color a Gris
+          let gray_scale = (imgData_ctxCanvas1.data[i + 0] + imgData_ctxCanvas1.data[i + 1] + imgData_ctxCanvas1.data[i + 2]) / 3;
+
+          imgData_ctxCanvas2.data[i + 0] = gray_scale;
+          imgData_ctxCanvas2.data[i + 1] = gray_scale;
+          imgData_ctxCanvas2.data[i + 2] = gray_scale;
           // imgData_ctxCanvas2.data[i + 0] = 0;
           // imgData_ctxCanvas2.data[i + 1] = 0;
           // imgData_ctxCanvas2.data[i + 2] = 0;
@@ -71,6 +148,7 @@
         imgData_ctxCanvas2.data[i + 3] = imgData_ctxCanvas1.data[i + 3];
       }
 
+      // Cargar Imagen Resultante en el último Canvas
       ctxCanvas2.putImageData(imgData_ctxCanvas2, 0, 0);
     }
   </script>

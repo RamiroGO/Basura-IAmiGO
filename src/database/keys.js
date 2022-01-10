@@ -1,4 +1,4 @@
-export const list_user = {
+module.exports = {
 	host: 'localhost',
 	user: 'root',
 	// password: 'root1234',

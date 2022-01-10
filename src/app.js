@@ -1,10 +1,23 @@
 let express = require('express');
 let morgan = require('morgan');
 let path = require('path');
+let http = require('http');
 let app = express();
+
+/**
+ * Importar Rutas
+ */
+const route_post_auth = require('./routes/authentications/post.js');
+const route_get_home = require('./routes/routes.js');
+const route_get_auth = require('./routes/authentications/get.js');
+const route_get_aplicaciones = require('./routes/aplicaciones/get');
+const route_get_propuestas_cure = require('./routes/propuestas/cure_routes.js');
+const route_get_diccionario = require('./routes/diccionario/tags_routes.js');
+
 
 // Configurar el Puerto, en caso de no establecerse ninguno,
 //  establecer un valor por defecto 
+// let PORT = path.normalize(process.env.PORT || 3000);
 let PORT = process.env.PORT || 3000;
 // Settings
 // Guardamos el valor del puerto en una variable contenida dentro de 'app'
@@ -17,7 +30,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 // Middlewares
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Routes
 // Rutas de Statics Files
@@ -28,17 +41,18 @@ app.use(express.static(path.join(__dirname, 'views/public/css')));
 app.use(express.static(path.join(__dirname, 'views/')));
 
 // Rutas de URL del Cliente y Comandos
-app.use(require('./routes/authentications/post.js'));
-app.use(require('./routes/authentications/get.js'));
-app.use(require('./routes/aplicaciones/get'));
-app.use(require('./routes/propuestas/cure_routes.js'));
-app.use(require('./routes/diccionario/tags_routes.js'));
-app.use(require('./routes/routes.js'));
+app.use(route_post_auth);
+app.use(route_get_auth);
+app.use(route_get_aplicaciones);
+app.use(route_get_propuestas_cure);
+app.use(route_get_diccionario);
+app.use(route_get_home);
 
 // Listening the Server
-app.listen(app.get('port'), function () {
-    console.log('Server on Port', app.get('port'));
-});
 
-// Exportar módulo usando 'CommonJS'
-module.exports = app;
+let server = http.createServer(app);
+server.listen(app.get('port'), () => {
+  let msg_port = 'Express '.concat(typeof server.address().port === "number" ? 'PC-Server' : 'Server');
+  console.log(server.address());
+  console.log(msg_port.concat(' Listening on localhost:' + server.address().port));
+});

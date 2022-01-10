@@ -1,5 +1,4 @@
-import * as bcryptjs from 'bcryptjs';
-
+const bcryptjs = require('bcryptjs');
 const encrypt_psw = {};
 
 // Encriptar la contraseña
@@ -10,7 +9,7 @@ encrypt_psw.encryptPassword = async (password) => {
 	const salt = await bcryptjs.genSalt(level_security);
 	// Ciframos la contraseña a partir del patrón.
 	const hashpass = bcryptjs.hash(password, salt);
-	
+
 	return hashpass;
 }
 
@@ -28,4 +27,4 @@ encrypt_psw.matchPassword = async (password, savedPassword) => {
 	}
 }
 
-export default encrypt_psw;
+module.exports = encrypt_psw;

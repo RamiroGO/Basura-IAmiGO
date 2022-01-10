@@ -1,8 +1,8 @@
-import connect_mysql from "../database/connect_mysql.js";
-import * as encrypt_pswJs from "./encrypt_psw.js";
-import * as hi_userJs from "./hi_user.js";
+const connect_mysql = require("../database/connect_mysql.js");
+const encrypt_pswJs = require('./encrypt_psw.js');
+const hi_userJs = require("./hi_user.js");
 
-export class register_database {
+class register_database {
 	// Crear un objeto temporal con el username, password y contrseña con los nombres de los parámetros exigidos por la base de datos.
 	Fields_Database = {};
 	constructor(Obj_MySQL) {
@@ -74,7 +74,7 @@ export class register_database {
 		return mensaje;
 	}
 }
-export function Redirect_IsValidUser(req, views, res) {
+function Redirect_IsValidUser(req, views, res) {
 	const
 		username = req.body.name_user, password = req.body.pass_user;
 
@@ -117,4 +117,10 @@ export function Redirect_IsValidUser(req, views, res) {
 			}
 		}
 	);
+}
+
+module.exports = {
+	register_database,
+	IsSame,
+	Redirect_IsValidUser
 }
