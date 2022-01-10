@@ -7,8 +7,18 @@
 ### VSCode
 ### MySQL
 ### NodeJS
+
 ### HTML, JavaScript, CSS:
 - Express
+- bcryptjs
+- ejs
+- morgan
+- path
+- util
 - BootsTrap 5.1
 - FONT AWESOME
 - ANIMATE.CSS
+
+## Servidor
+- Vercel
+- 

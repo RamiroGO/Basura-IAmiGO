@@ -23,7 +23,7 @@ let PORT = process.env.PORT || 3000;
 // Guardamos el valor del puerto en una variable contenida dentro de 'app'
 app.set('port', PORT);
 // Establecer la ruta de los archivos en la carpeta 'views'
-app.set('views', path.join(__dirname, "./views")); // Ubicar la carpeta de Views donde se encuentran los HTMLs
+app.set('views', path.join(__dirname, "./views/")); // Ubicar la carpeta de Views donde se encuentran los HTMLs
 // Definir el uso de archivos con extensión HTML para renderizarlos como EJS
 app.engine('html', require('ejs').renderFile);
 // Definir el Motor de Plantillas para archivos html y ejs
@@ -38,7 +38,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'views/public/img')));
 app.use(express.static(path.join(__dirname, 'views/public/js')));
 app.use(express.static(path.join(__dirname, 'views/public/css')));
-app.use(express.static(path.join(__dirname, 'views/')));
 
 // Rutas de URL del Cliente y Comandos
 app.use(route_post_auth);
